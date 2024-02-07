@@ -1,0 +1,33 @@
+{
+  "name": "findafriend",
+  "version": "1.0.0",
+  "description": "- Deve ser possivelcadastrar um pet. - Deve ser possivel listar todos os pets disponivelpara adoção em uma cidade. - Deve ser possível filtrar pets por suas características - Deve ser possível visualizar detalhes de um pet para adoção - Deve ser possível se cadastrar como uma ORG - Deve ser possível realizar login como uma ORG",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src --out-dir build",
+    "start": "node build/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/node": "20.11.15",
+    "prisma": "5.9.1",
+    "tsup": "8.0.1",
+    "tsx": "4.7.0",
+    "typescript": "5.3.3",
+    "vite-tsconfig-paths": "4.3.1",
+    "vitest": "1.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "5.9.1",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.4.1",
+    "fastify": "4.26.0",
+    "zod": "3.22.4"
+  }
+}
