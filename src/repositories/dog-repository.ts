@@ -1,4 +1,4 @@
-import { Age, Dog, Prisma, Size } from "@prisma/client";
+import { Age, Dog, Organization, Prisma, Size } from "@prisma/client";
 
 export interface SearchDogs{
  city: string
@@ -10,4 +10,5 @@ export interface DogRepository{
     create(data: Prisma.DogUncheckedCreateInput): Promise<Dog>
     findById(id: string): Promise<Dog | null>
     findManyByQuery(data: SearchDogs): Promise<Dog[]>
+    findManyByOrgs(orgs: Organization[]):Promise<Dog[]>
 }

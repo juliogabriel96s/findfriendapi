@@ -1,8 +1,10 @@
-import { Prisma, Dog, $Enums } from "@prisma/client";
+import { Prisma, Dog, $Enums, Organization } from "@prisma/client";
 import { DogRepository, SearchDogs } from "../dog-repository";
 import { randomUUID } from "crypto";
 
 export class InMemoryDogRepository implements DogRepository{
+   
+   
     
    
     public items :  Dog[] = []
@@ -35,17 +37,24 @@ async findById(id: string){
 }
 
 async findManyByQuery({age, size}: SearchDogs) {
-let dogs = this.items
+    let dogs = this.items
+    
+    if(age){
+        dogs = this.items.filter((item) => item.age === age)
+    }
+    
+    if(size){
+        dogs = this.items.filter((item) => item.size === size)
+    }
+    
+    return dogs
+    }
 
-if(age){
-    dogs = this.items.filter((item) => item.age === age)
-}
+    async findManyByOrgs(orgs: Organization[]): Promise<Dog[]>{
+const orgId = orgs.map((org) => org.id)
+return this.items.filter((item) => orgId.includes(item.organizationId))
 
-if(size){
-    dogs = this.items.filter((item) => item.size === size)
-}
 
-return dogs
-}
+    }
 
 }

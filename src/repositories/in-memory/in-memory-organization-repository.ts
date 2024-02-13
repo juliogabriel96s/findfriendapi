@@ -2,6 +2,7 @@ import { OrganizationRepository } from "../organization-repository";
 import { Prisma, Organization } from "@prisma/client";
 
 export class inMemoryOrganizationRepository implements OrganizationRepository{
+  
     
     public items: Organization[] = []
 
@@ -40,6 +41,11 @@ if(!organization){
 }
 
 return organization
+}
+
+async findDogByCity(city: string) {
+    return this.items.filter(
+        (item) => item.city.toLocaleLowerCase() === city.toLocaleLowerCase())
 }
 
 }

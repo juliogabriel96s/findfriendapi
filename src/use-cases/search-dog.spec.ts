@@ -30,7 +30,7 @@ describe('Search dogs use case', () =>{
         for(let i = 1; i <= 2; i++){
             await dogRepository.create({
                 id: `dog-0${i}`,
-                name: `dog-0${i}`,
+                name: `dog 0${i}`,
                 description: 'dog energico',
                 age: 'adult',
                 size: 'medium',
@@ -38,15 +38,16 @@ describe('Search dogs use case', () =>{
                 
             })
 
-            const { dogs } = await sut.execute({
-                city: 'Node city',
-                age: 'adult',
-                size: null
-            })
-
-            console.log(dogs)
-
-            expect(dogs).toHaveLength(2)
         }
+
+        const { dogs } = await sut.execute({
+            city: 'Node city',
+            age: 'adult',
+            size: null
+        })
+
+         console.log(dogs)
+
+         expect(dogs).toHaveLength(2)
     })
 })
